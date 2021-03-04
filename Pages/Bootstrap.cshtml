@@ -1,0 +1,35 @@
+@page
+@model BootstrapModel
+<div class="row">
+    <div class="col-2 border">
+        Column One
+    </div>
+    <div class="col-6 border">
+        <form method="post">
+            <!-- Display Data Validation Summary of all errors. Optional -->
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <!-- Perform Data Validation for FirstName. Required -->
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label">Last Name</label>
+                <input asp-for="LastName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+    <div class="col-4 border border-danger">
+        Thank you @Model.FirstName @Model.LastName
+    </div>
+</div>
+
+<!-- Add JS code for Data Validation -->
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
